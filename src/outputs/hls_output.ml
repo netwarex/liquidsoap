@@ -161,8 +161,8 @@ class hls_output p =
       (List.hd streams).hls_oc <> None
 
     method open_pipes =
+      segment <- segment + 1;
       List.iter (fun s ->
-          segment <- segment + 1;
           let mode = [Open_wronly; Open_creat; Open_trunc] in
           let oc = open_out_gen mode file_perm (self#segment_name s) in
           set_binary_mode_out oc true;
